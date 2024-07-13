@@ -22,7 +22,7 @@ void guass_elimination(quantum::matrix<T> &A){
                 mx=abs(A(i,j));
             }
         }
-        if(mx==static_cast<T>(0)){
+        if(std::round(mx*1000000)/1000000==0){      // this works well till 6 decimal places
             continue;      // whole column is zero, useless
         }
         A.swap_rows(row,top);

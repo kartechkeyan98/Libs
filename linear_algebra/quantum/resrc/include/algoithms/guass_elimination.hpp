@@ -80,7 +80,7 @@ void rref(quantum::matrix<T> &A){
     }
     for(size_t i=0;i<m;++i){
         for(size_t j=0;j<n;++j){
-            if(A(i,j)==-0.0f)A(i,j)=+0.0f;
+            if((float)std::round(A(i,j)*1000000)/1000000==-0.0f)A(i,j)=+0.0f;
         }
     }
     std::cout<<"rref done\n";

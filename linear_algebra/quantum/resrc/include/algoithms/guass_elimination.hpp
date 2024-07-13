@@ -1,5 +1,6 @@
 // File contains algos related to guass elmination and more
 #include<matrix/matrix.hpp>
+#include<cmath>
 
 template<typename T>
 void guass_elimination(quantum::matrix<T> &A){
@@ -14,14 +15,16 @@ void guass_elimination(quantum::matrix<T> &A){
 
         // find the non-zero value with maximum abs val
         size_t top=row;
-        T mx=abs(A(row,j));
+        T mx=fabs(A(row,j));
         for(size_t i=row+1;i<m;++i){
             if(abs(A(i,j))>mx){
                 top=i;
                 mx=abs(A(i,j));
             }
         }
-        if(mx==0)continue;      // whole column is zero, useless
+        if(mx==static_cast<T>(0)){
+            continue;      // whole column is zero, useless
+        }
         A.swap_rows(row,top);
 
         // now start elminating
@@ -52,16 +55,14 @@ void rref(quantum::matrix<T> &A){
 
         // find the non-zero value with maximum abs val
         size_t top=row;
-        std::cout<<top<<std::endl;
-        T mx=abs(A(row,j));
+        T mx=fabs(A(row,j));
         for(size_t i=row+1;i<m;++i){
             if(abs(A(i,j))>mx){
                 top=i;
                 mx=abs(A(i,j));
             }
         }
-        std::cout<<"A("<<top<<","<<j<<") = "<<mx<<std::endl;
-        if(mx==static_cast<T>(0)){
+        if(std::round(mx*1000000)/1000000==0){      // this works well till 6 decimal places
             continue;      // whole column is zero, useless
         }
         A.swap_rows(row,top);

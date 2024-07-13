@@ -7,8 +7,9 @@ int main(int argc, char** argv){
     quantum::matrix<float> A=(float[][4]){
         {1.0, 1.0, 1.0, 3.0},
         {1.0, 2.0, 2.0, 5.0},
-        {3.0, 4.0, 4.0, 11.0}
+        {3.0, 4.0, 4.0, 12.0}
     };
+    // all the output is gonna be purple
     std::cout<<"\e[1;35m";
     std::cout<<std::fixed;
     std::cout<<std::setprecision(4)<<A<<std::endl;

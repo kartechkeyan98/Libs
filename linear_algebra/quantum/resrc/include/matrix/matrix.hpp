@@ -276,7 +276,7 @@ public:
      * Important Elementary row ops
      */
     void swap_rows(size_t i, size_t j){
-        assert(i>=0&&j>=0&&i<this->_rows&&j<this->_cols);
+        assert(i>=0&&j>=0&&i<this->_rows&&j<this->_rows);
         if(i==j)return;
         T* temp=this->_data[i];
         this->_data[i]=this->_data[j];
@@ -288,7 +288,7 @@ public:
     }
     void add_multiple_of_row(size_t i, size_t j, const T& c){
         // A(i) += k*A(j)
-        assert(i>=0&&j>=0&&i<this->_rows&&j<this->_cols);
+        assert(i>=0&&j>=0&&i<this->_rows&&j<this->_rows);
         for(size_t k=0;k<this->_cols;++k)this->_data[i][k]+=c*this->_data[j][k];
     }
 

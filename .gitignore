@@ -1,0 +1,5 @@
+# ignore all .vscode
+.vscode/*
+
+# ignore all exp files
+exp/*
